@@ -1,0 +1,4 @@
+langchain
+langchain-ollama
+langchain-text-splitters
+youtube-transcript-api
