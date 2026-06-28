@@ -1,17 +1,7 @@
 """Command-line interface."""
 
 from youtube_summarizer.errors import YoutubeSummarizerError
-from youtube_summarizer.summarizer import YoutubeTranscriptSummarizer
-from youtube_summarizer.transcript import fetch_transcript_text
-from youtube_summarizer.youtube import extract_video_id
-
-
-def summarize_url(url: str) -> str:
-    """Run the complete URL-to-summary pipeline."""
-    video_id = extract_video_id(url)
-    transcript_text = fetch_transcript_text(video_id)
-    summarizer = YoutubeTranscriptSummarizer()
-    return summarizer.summarize(transcript_text)
+from youtube_summarizer.service import summarize_url
 
 
 def main() -> int:

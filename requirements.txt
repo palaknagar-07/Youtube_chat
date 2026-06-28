@@ -1,4 +1,6 @@
+fastapi
 langchain
 langchain-ollama
 langchain-text-splitters
+uvicorn[standard]
 youtube-transcript-api

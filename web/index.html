@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>YouTube ChatHelp</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="intro" aria-labelledby="app-title">
+        <div>
+          <p class="eyebrow">Local Ollama summarizer</p>
+          <h1 id="app-title">YouTube ChatHelp</h1>
+        </div>
+        <div class="status" id="health-status">Checking backend...</div>
+      </section>
+
+      <section class="tool" aria-label="YouTube summary form">
+        <form id="summary-form" class="form">
+          <label for="youtube-url">YouTube URL</label>
+          <div class="input-row">
+            <input
+              id="youtube-url"
+              name="url"
+              type="url"
+              placeholder="https://www.youtube.com/watch?v=..."
+              autocomplete="off"
+              required
+            />
+            <button id="submit-button" type="submit">Summarize</button>
+          </div>
+        </form>
+
+        <div class="actions" id="result-actions" hidden>
+          <button id="copy-button" type="button">Copy</button>
+          <button id="clear-button" type="button">Clear</button>
+        </div>
+      </section>
+
+      <section class="message" id="message" role="status" hidden></section>
+
+      <section class="summary-panel" id="summary-panel" hidden>
+        <div class="summary-meta" id="summary-meta"></div>
+        <article class="summary" id="summary"></article>
+      </section>
+    </main>
+
+    <script src="/static/app.js"></script>
+  </body>
+</html>

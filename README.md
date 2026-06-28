@@ -1,10 +1,12 @@
 # YouTube ChatHelp
 
-Terminal-first YouTube video summarizer powered by LangChain and Ollama.
+Local YouTube video summarizer powered by LangChain, Ollama, and FastAPI.
 
-Phase one accepts a YouTube URL, fetches the transcript, splits long transcripts
+The app accepts a YouTube URL, fetches the transcript, splits long transcripts
 into chunks, summarizes each chunk with `llama3.2`, and combines those section
 summaries into one polished final summary.
+
+It now includes a minimal local web UI served by FastAPI.
 
 ## Requirements
 
@@ -21,13 +23,33 @@ ollama pull llama3.2
 Install Python dependencies:
 
 ```bash
-pip install -r requirements.txt
+./venv/bin/python -m pip install -r requirements.txt
 ```
 
-## Run
+## Run Web App
+
+Start Ollama first, then run:
 
 ```bash
-python src/main.py
+./venv/bin/python -m uvicorn api.main:app --reload
+```
+
+Open:
+
+```text
+http://127.0.0.1:8000
+```
+
+FastAPI docs are available at:
+
+```text
+http://127.0.0.1:8000/docs
+```
+
+## Run Terminal App
+
+```bash
+./venv/bin/python src/main.py
 ```
 
 Then paste a YouTube URL when prompted.
@@ -50,7 +72,15 @@ src/
     config.py                  Model and chunk settings
     errors.py                  User-friendly exceptions
     prompts.py                 LangChain prompt templates
+    service.py                 Shared app service used by CLI and API
     summarizer.py              LangChain/Ollama summary pipeline
     transcript.py              YouTube transcript fetching
     youtube.py                 YouTube URL parsing
+api/
+  main.py                      FastAPI app and JSON endpoints
+web/
+  index.html                   Minimal local UI
+  static/
+    app.js                     Browser behavior and API calls
+    styles.css                 UI styling
 ```
